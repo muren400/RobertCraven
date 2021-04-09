@@ -8,23 +8,22 @@ export default class Gallery {
         this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.01, 10000);
         this.camera.position.z = 300;
         this.camera.position.y = 100;
+        
+        this.scene = new THREE.Scene();
 
         let color = 0xFFFFFF;
         let intensity = 1;
-        let light = new THREE.DirectionalLight(color, intensity);
-        light.position.set(-10000, 20000, 40000);
-        this.camera.add(light);
+        let light = new THREE.SpotLight(0xafafff, intensity);
+        light.position.set(40000, 20000, 40000);
+        this.scene.add(light);
 
-        this.scene = new THREE.Scene();
-        var spotLight = new THREE.SpotLight(0xafafff);
-        spotLight.position.set(10000, 10000, 30000);
-        this.scene.add(spotLight);
+        light = new THREE.SpotLight(0xffafaf, intensity);
+        light.position.set(-40000, 20000, -40000);
+        this.scene.add(light);
 
-        // this.scene.background = new THREE.Color(0xff0000);
-
-        spotLight = new THREE.SpotLight(0xffafaf);
-        spotLight.position.set(-100, -100, 300);
-        this.scene.add(spotLight);
+        light = new THREE.DirectionalLight(color, .2);
+        light.position.set(0, -20000, 0);
+        this.scene.add(light);
 
         this.objLoader = new OBJLoader();
         this.mtlLoader = new MTLLoader();
@@ -46,8 +45,6 @@ export default class Gallery {
         this.controls = new OrbitControls(this.camera, this.renderer.domElement);
         this.controls.enableDamping = true;
         this.controls.update();
-
-        // this.picker = new Picker(this.canvas, this.object.children, this.camera);
 
         this.resize();
 

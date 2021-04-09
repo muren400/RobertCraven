@@ -5,7 +5,7 @@ newmtl material_0
 Ka 1 1 1
 Kd 1 1 1
 Ks 1 1 1
-Ns 1000
+Ns 10
 map_Kd Chair Version 2 mm_1.jpg
 
 newmtl material_1
