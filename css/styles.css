@@ -1,0 +1,142 @@
+html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: sans-serif;
+}
+
+#header {
+    position: fixed;
+    z-index: 1000;
+    height: 50px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: white;
+}
+
+#header nav {
+    
+}
+
+#menuButton {
+    visibility: visible;
+    z-index: 2000;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px;
+    border-style: solid;
+    border-color: white;
+    border-width: 1px;
+    border-radius: 4px;
+    color: white;
+}
+
+#header nav li {
+    list-style-type: none;
+    padding: 10px;
+}
+
+#header nav li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.3em;
+}
+
+#header nav li ul {
+    position: relative;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+#header nav li ul li a {
+    font-size: 1em;
+}
+
+#logo {
+    font-size: 30px;
+    padding: 5px;
+    float: left;
+}
+
+.section {
+    min-height: 100%;
+    padding-top: 60px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    box-sizing: border-box;
+}
+
+#modelContainer canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#contact {
+    background-color: gray;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+@media only screen and (max-width: 600px) {
+    #header nav {
+        position: absolute;
+        width: 100%;
+        background-color: gray;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    #header nav {
+        visibility: visible;
+        float: right;
+    }
+    #menuButton {
+        visibility: hidden;
+    }
+    #header nav li {
+        float: left;
+        list-style-type: none;
+        padding: 10px;
+    }
+    #header nav li:hover {
+        background-color: #ffffff3c;
+    }
+
+    #header nav li ul {
+        visibility: hidden;
+        position: absolute;
+        padding-top: 10px;
+        padding-left: 0px;
+    }
+
+    #header nav li ul li:hover {
+        background-color: #00000000;
+    }
+
+    #header nav li ul li:hover a {
+        color: #ffffff6e;
+    }
+
+    #header nav li:hover ul {
+        visibility: visible;
+    }
+    #header nav li ul li {
+        float: none;
+        padding-left: 0;
+    }
+}
