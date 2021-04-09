@@ -24,8 +24,8 @@ body {
     color: white;
 }
 
-#header nav {
-    
+#header nav ul {
+    margin: 0;
 }
 
 #menuButton {
@@ -40,11 +40,13 @@ body {
     border-width: 1px;
     border-radius: 4px;
     color: white;
+    cursor: pointer;
 }
 
 #header nav li {
     list-style-type: none;
     padding: 10px;
+    cursor: pointer;
 }
 
 #header nav li a {
@@ -100,7 +102,8 @@ body {
     }
 }
 
-@media only screen and (min-width: 600px) {
+/* @media only screen and (min-width: 600px) and (hover: hover) and (pointer: fine){ */
+@media only screen and  (min-width: 600px) and (hover: hover){ 
     #header nav {
         visibility: visible;
         float: right;
