@@ -1,39 +1,43 @@
 import * as THREE from './three.module.js';
 import Picker from './picker.js';
 import { OBJLoader } from './OBJLoader.js';
+import { MTLLoader } from './MTLLoader.js';
 import { OrbitControls } from './OrbitControls.js';
 
 export default class Gallery {
     constructor() {
-        this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.01, 1000);
-        this.camera.position.z = 400;
-        this.camera.position.y = 200;
+        this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.01, 10000);
+        this.camera.position.z = 300;
+        this.camera.position.y = 100;
 
         let color = 0xFFFFFF;
         let intensity = 1;
         let light = new THREE.DirectionalLight(color, intensity);
-        light.position.set(-1, 2, 4);
+        light.position.set(-10000, 20000, 40000);
         this.camera.add(light);
 
         this.scene = new THREE.Scene();
         var spotLight = new THREE.SpotLight(0xafafff);
-        spotLight.position.set(100, 100, 300);
+        spotLight.position.set(10000, 10000, 30000);
         this.scene.add(spotLight);
+
+        // this.scene.background = new THREE.Color(0xff0000);
 
         spotLight = new THREE.SpotLight(0xffafaf);
         spotLight.position.set(-100, -100, 300);
         this.scene.add(spotLight);
 
-        this.loader = new OBJLoader();
+        this.objLoader = new OBJLoader();
+        this.mtlLoader = new MTLLoader();
 
         this.renderer = new THREE.WebGLRenderer({ antialias: true });
         this.renderer.setSize(window.innerWidth, window.innerHeight);
 
-        window.addEventListener("resize", this.resize);
+        window.addEventListener("resize", this.resize.bind(this));
         // this.renderer.domElement.addEventListener("wheel", mouseWheelEventListener);
         // this.renderer.domElement.addEventListener("mousemove", mouseMoveEventListener);
         // this.renderer.domElement.addEventListener("mouseup", mouseUpEventListener);
-        this.renderer.domElement.addEventListener("mousedown", this.mouseDownEventListener);
+        this.renderer.domElement.addEventListener("mousedown", this.mouseDownEventListener.bind(this));
         // this.renderer.domElement.addEventListener("mouseleave", mouseLeaveEventListener);
         // this.renderer.domElement.addEventListener("click", mouseClickEventListener);
 
@@ -43,6 +47,8 @@ export default class Gallery {
         this.controls = new OrbitControls(this.camera, this.renderer.domElement);
         this.controls.enableDamping = true;
         this.controls.update();
+
+        // this.picker = new Picker(this.canvas, this.object.children, this.camera);
 
         this.resize();
 
@@ -194,22 +200,83 @@ export default class Gallery {
     }
 
     loadModel(modelURL) {
-        if(this.object) {
+        if (this.object) {
             this.scene.remove(this.object);
         }
 
-        this.loader.load(
-            modelURL,
-            object => {
-                this.object = object;
-                this.scene.add(this.object);
-                picker = new Picker(this.canvas, this.object.children, this.camera);
-                var bbox = new THREE.Box3().setFromthis.object(this.object);
-                this.controls.target = new THREE.Vector3(
-                    (bbox.max.x + bbox.min.x) / 2,
-                    (bbox.max.y + bbox.min.y) / 2,
-                    (bbox.max.z + bbox.min.z) / 2,
-                );
+        const splitIndex = modelURL.lastIndexOf("/") + 1;
+        const path = modelURL.substring(0, splitIndex);
+        let modelName = modelURL.substring(splitIndex).replace(".obj", "");
+
+        var mtlLoader = new MTLLoader();
+        mtlLoader.setPath(path);
+        mtlLoader.load(modelName + ".mtl",
+            materials => {
+
+                materials.preload();
+
+                var objLoader = new OBJLoader();
+                objLoader.setMaterials(materials);
+                objLoader.setPath(path);
+                objLoader.load(modelName + ".obj",
+                    object => {
+
+                        this.object = object;
+                        this.scene.add(object);
+
+                        var bbox = new THREE.Box3().setFromObject(this.object);
+                        this.controls.target = new THREE.Vector3(
+                            (bbox.max.x + bbox.min.x) / 2,
+                            (bbox.max.y + bbox.min.y) / 2,
+                            (bbox.max.z + bbox.min.z) / 2,
+                        );
+
+                    },
+                    xhr => {
+                        console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+                    },
+                    error => {
+                        console.log('An error happened');
+                    }
+                )
+            },
+            xhr => {
+                console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+            },
+            error => {
+                console.log('An error happened');
+            }
+        );
+
+        // this.objLoader.load(
+        //     modelURL,
+        //     object => {
+        //         this.object = object;
+        //         this.scene.add(this.object);
+        //         this.picker = new Picker(this.canvas, this.object.children, this.camera);
+        //         var bbox = new THREE.Box3().setFromObject(this.object);
+        //         this.controls.target = new THREE.Vector3(
+        //             (bbox.max.x + bbox.min.x) / 2,
+        //             (bbox.max.y + bbox.min.y) / 2,
+        //             (bbox.max.z + bbox.min.z) / 2,
+        //         );
+
+        //         this.loadMaterial(modelURL.replace(".obj", ".mtl"), object);
+        //     },
+        //     xhr => {
+        //         console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+        //     },
+        //     error => {
+        //         console.log('An error happened');
+        //     }
+        // );
+    }
+
+    loadMaterial(materialURL, object) {
+        this.mtlLoader.load(
+            materialURL,
+            material => {
+                object.material = material;
             },
             xhr => {
                 console.log((xhr.loaded / xhr.total * 100) + '% loaded');
