@@ -1,5 +1,4 @@
 import * as THREE from './three.module.js';
-import Picker from './picker.js';
 import { OBJLoader } from './OBJLoader.js';
 import { MTLLoader } from './MTLLoader.js';
 import { OrbitControls } from './OrbitControls.js';
@@ -199,7 +198,28 @@ export default class Gallery {
         requestAnimationFrame(this.render.bind(this));
     }
 
+    fitCamera() {
+        const bbox = new THREE.Box3().setFromObject(this.object);
+        const modelWidth = bbox.max.x - bbox.min.x;
+        const modelHeight = bbox.max.y - bbox.min.y;
+        const cameraDistance = 2.5*Math.max(modelWidth, modelHeight)/0.85090352453;
+
+         const target = new THREE.Vector3(
+            (bbox.max.x + bbox.min.x) / 2,
+            (bbox.max.y + bbox.min.y) / 2,
+            (bbox.max.z + bbox.min.z) / 2,
+        );
+
+        this.camera.position.z = target.z + cameraDistance;
+        this.camera.position.y = target.y;
+        this.camera.position.x = target.x;
+
+        this.controls.target = target;
+    }
+
     loadModel(modelURL) {
+        this.showLoadingAnimation(true);
+
         if (this.object) {
             this.scene.remove(this.object);
         }
@@ -220,17 +240,12 @@ export default class Gallery {
                 objLoader.setPath(path);
                 objLoader.load(modelName + ".obj",
                     object => {
-
                         this.object = object;
                         this.scene.add(object);
 
-                        var bbox = new THREE.Box3().setFromObject(this.object);
-                        this.controls.target = new THREE.Vector3(
-                            (bbox.max.x + bbox.min.x) / 2,
-                            (bbox.max.y + bbox.min.y) / 2,
-                            (bbox.max.z + bbox.min.z) / 2,
-                        );
+                        this.fitCamera();
 
+                        this.showLoadingAnimation(false);
                     },
                     xhr => {
                         console.log((xhr.loaded / xhr.total * 100) + '% loaded');
@@ -247,44 +262,14 @@ export default class Gallery {
                 console.log('An error happened');
             }
         );
-
-        // this.objLoader.load(
-        //     modelURL,
-        //     object => {
-        //         this.object = object;
-        //         this.scene.add(this.object);
-        //         this.picker = new Picker(this.canvas, this.object.children, this.camera);
-        //         var bbox = new THREE.Box3().setFromObject(this.object);
-        //         this.controls.target = new THREE.Vector3(
-        //             (bbox.max.x + bbox.min.x) / 2,
-        //             (bbox.max.y + bbox.min.y) / 2,
-        //             (bbox.max.z + bbox.min.z) / 2,
-        //         );
-
-        //         this.loadMaterial(modelURL.replace(".obj", ".mtl"), object);
-        //     },
-        //     xhr => {
-        //         console.log((xhr.loaded / xhr.total * 100) + '% loaded');
-        //     },
-        //     error => {
-        //         console.log('An error happened');
-        //     }
-        // );
     }
 
-    loadMaterial(materialURL, object) {
-        this.mtlLoader.load(
-            materialURL,
-            material => {
-                object.material = material;
-            },
-            xhr => {
-                console.log((xhr.loaded / xhr.total * 100) + '% loaded');
-            },
-            error => {
-                console.log('An error happened');
-            }
-        );
+    showLoadingAnimation(show){
+        if(show) {
+            document.getElementById("loadingScreen").classList.remove("hidden");
+        } else {
+            document.getElementById("loadingScreen").classList.add("hidden");
+        }
     }
 }
 
