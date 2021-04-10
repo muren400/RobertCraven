@@ -33,7 +33,7 @@ MMMMMMMMMMMMMMMMMMMMMMMMMMNxldddloXWk:;okkko:clccxXMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 MMMMMMMMMMMMMMMMMMMMMMMMMMNdcooo:oNMWKocool::OWNNWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 MMMMMMMMMMMMMMMMMMMMMMMMMMMXOkkkkXMMMMKxoddd0WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
-                                                                          muren.
+                                                                       muren.org
 -->
 <html>
 
@@ -49,27 +49,13 @@ MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 <body oncontextmenu="return false;">
     <div id="header">
         <div id="logo">Robert Craven</div>
+        <div id="menuButton" onclick="toggleMenu()">MENU</div>
         <nav class="hidden">
             <ul>
                 <li>
                     <a onclick="navigateToElement('modelContainer')">
                         Works
                         <ul id="modelMenu">
-                            <li>
-                                <a class="modelAnchor" href="./res/coke/Diet Coke Can.obj">Coke</a>
-                            </li>
-                            <li>
-                                <a class="modelAnchor" href="./res/chair/Chair Version 2 mm.obj">Chair</a>
-                            </li>
-                            <li>
-                                <a class="modelAnchor" href="./res/female02/female02.obj">Female</a>
-                            </li>
-                            <li>
-                                <a class="modelAnchor" href="./res/cottage_obj.obj">Cottage</a>
-                            </li>
-                            <li>
-                                <a class="modelAnchor" href="./res/lebendekackwurst.obj">Kackwurst</a>
-                            </li>
                         </ul>
                     </a>
                 </li>
@@ -78,11 +64,12 @@ MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
                 </li>
             </ul>
         </nav>
-        <div id="menuButton" onclick="toggleMenu()">MENU</div>
     </div>
+    
     <div id="mainContent">
         <div id="modelContainer" class="section">
             <div id="loadingScreen" class="hidden">
+                <span id="loadingProgress">%</span>
                 <img src="./res/loading.jpg" alt="loading...">
             </div>
         </div>

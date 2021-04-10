@@ -2,10 +2,11 @@
 # Each is referenced by name before the faces it applies to in the obj file
 
 newmtl material0
-Ka 1.000000 1.000000 1.000000
-Kd 1.000000 1.000000 1.000000
-Ks 0.000000 0.000000 0.000000
-Tr 1.000000
-illum 1
-Ns 0.000000
+Ns 100
+Ka 0.000000 0.000000 0.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.165000 0.165000 0.165000
+Ni 1.000000
+d 1.000000
+illum 2
 map_Kd capsule0.jpg

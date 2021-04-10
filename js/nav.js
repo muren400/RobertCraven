@@ -4,9 +4,9 @@ function navigateToElement(elementID) {
 }
 
 function toggleMenu() {
-    document.querySelector("#header nav").classList.toggle('hidden');
+    document.querySelector("nav").classList.toggle('hidden');
 }
 
 function closeMenu() {
-    document.querySelector("#header nav").classList.add('hidden');
+    document.querySelector("nav").classList.add('hidden');
 }
