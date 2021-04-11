@@ -1,201 +1,198 @@
+/* GENERAL */
 html {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    background-color: black;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: sans-serif;
 }
 
+/* HEADER */
 #header {
-    position: fixed;
-    z-index: 1000;
-    height: 50px;
-    top: 0;
-    left: 0;
-    width: 100%;
-    color: white;
+  position: fixed;
+  z-index: 1000;
+  height: 50px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  color: white;
 }
 
 #header nav {
-    z-index: 2000;
-    position: fixed;
-    top: 0px;
-    width: 100%;
-    height: 100%;
-    overflow: scroll;
-    background-color: gray;
+  z-index: 2000;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+  background-color: gray;
 }
 
 #header nav ul {
-    margin: 0;
+  margin: 0;
 }
 
 #menuButton {
-    visibility: visible;
-    z-index: 3000;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    padding: 10px;
-    border-style: solid;
-    border-color: white;
-    border-width: 1px;
-    border-radius: 4px;
-    color: white;
-    cursor: pointer;
+  visibility: visible;
+  z-index: 3000;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 10px;
+  border-style: solid;
+  border-color: white;
+  border-width: 1px;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
 }
 
 #header nav li {
-    list-style-type: none;
-    padding: 10px;
-    cursor: pointer;
+  list-style-type: none;
+  padding: 10px;
+  cursor: pointer;
 }
 
-#header nav li a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.3em;
+#header nav li {
+  text-decoration: none;
+  font-size: 1.3em;
 }
 
 #header nav li ul {
-    position: relative;
-    padding-top: 10px;
-    padding-left: 10px;
+  position: relative;
+  padding-top: 10px;
+  padding-left: 10px;
 }
 
-#header nav li ul li a {
-    font-size: .8em;
+#header nav li ul li {
+  font-size: 0.8em;
 }
 
 #logo {
-    font-size: 30px;
-    padding: 5px;
-    float: left;
+  font-size: 30px;
+  padding: 5px;
+  float: left;
 }
 
+/* CONTENT */
 .section {
-    min-height: 100%;
-    padding-top: 60px;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-bottom: 10px;
-    box-sizing: border-box;
+  min-height: 100%;
+  padding-top: 60px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  box-sizing: border-box;
 }
 
-#modelContainer canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
+#showRoom canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 #loadingScreen {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    z-index: 100;
-    background-color: black;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #loadingProgress {
-    z-index: 1000;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, 50px);
+  z-index: 1000;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 50px);
 }
 
 #loadingScreen img {
-    height: 100px;
-    -webkit-animation: spin 2s linear infinite;
-    -moz-animation: spin 2s linear infinite;
-    animation: spin 2s linear infinite;
+  height: 100px;
+  -webkit-animation: spin 2s linear infinite;
+  -moz-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
 }
 
 @-moz-keyframes spin {
-    100% {
-        -moz-transform: rotate(360deg);
-    }
+  100% {
+    -moz-transform: rotate(360deg);
+  }
 }
 
 @-webkit-keyframes spin {
-    100% {
-        -webkit-transform: rotate(360deg);
-    }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
 }
 
 @keyframes spin {
-    100% {
-        -webkit-transform: rotate(360deg);
-        transform: rotate(360deg);
-    }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }
 
 #contact {
-    background-color: gray;
+  background-color: gray;
 }
 
 .hidden {
-    visibility: hidden;
+  visibility: hidden;
 }
 
-@media only screen and (max-width: 600px) {
-   
-}
-
-/* @media only screen and (min-width: 600px) and (hover: hover) and (pointer: fine){ */
-
+/* ALLWAYS ON MENU FOR NON TOUCH DEVICES */
 @media only screen and (min-width: 600px) and (hover: hover) {
-    #header nav {
-        position: fixed;
-        top: 0;
-        right: 0;
-        width: auto;
-        height: auto;
-        background-color: #00000000;
-        visibility: visible !important;
-        float: right;
-        overflow: inherit;
-    }
-    #menuButton {
-        visibility: hidden;
-    }
-    #header nav li {
-        float: left;
-        list-style-type: none;
-        padding: 10px;
-    }
-    #header nav li:hover {
-        background-color: #ffffff3c;
-    }
-    #header nav li ul {
-        visibility: hidden;
-        position: absolute;
-        padding-top: 10px;
-        padding-left: 0px;
-    }
-    #header nav li ul li:hover {
-        background-color: #00000000;
-    }
-    #header nav li ul li:hover a {
-        color: #ffffff6e;
-    }
-    #header nav li:hover ul {
-        visibility: visible;
-    }
-    #header nav li ul li {
-        float: none;
-        padding-left: 0;
-    }
+  #header nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: auto;
+    height: auto;
+    background-color: #00000000;
+    visibility: visible !important;
+    float: right;
+    overflow: inherit;
+  }
+  #menuButton {
+    visibility: hidden;
+  }
+  #header nav li {
+    float: left;
+    list-style-type: none;
+    padding: 10px;
+  }
+  #header nav li:hover {
+    background-color: #ffffff3c;
+  }
+  #header nav li ul {
+    visibility: hidden;
+    position: absolute;
+    padding-top: 10px;
+    padding-left: 0px;
+  }
+  #header nav li ul li:hover {
+    background-color: #00000000;
+  }
+  #header nav li ul li:hover {
+    color: #ffffff6e;
+  }
+  #header nav li:hover ul {
+    visibility: visible;
+  }
+  #header nav li ul li {
+    float: none;
+    padding-left: 0;
+  }
 }

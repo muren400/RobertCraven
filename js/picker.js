@@ -1,9 +1,9 @@
 import * as THREE from './three.module.js';
 
 export default class Picker {
-    constructor(canvas, meshes, camera) {
+    constructor(canvas, scene, camera) {
         this.canvas = canvas;
-        this.meshes = meshes;
+        this.scene = scene;
         this.camera = camera;
         this.raycaster = new THREE.Raycaster();
     }
@@ -28,9 +28,25 @@ export default class Picker {
         if (this.pickedObject) {
             this.pickedObject = undefined;
         }
+
+        let meshes = null;
+
+        this.scene.children.some(child => {
+            if(!child.children || child.children.length < 1) {
+                return false;
+            }
+
+            meshes = child.children;
+
+            return true;
+        });
+
+        if(!meshes) {
+            return;
+        }
     
         this.raycaster.setFromCamera(normalizedPosition, this.camera);
-        const intersectedObjects = this.raycaster.intersectObjects(this.meshes);
+        const intersectedObjects = this.raycaster.intersectObjects(meshes);
         if (intersectedObjects.length) {
             this.pickedObject = intersectedObjects[0];
             return this.pickedObject;

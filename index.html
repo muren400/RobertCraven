@@ -41,8 +41,8 @@ MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
     <title>gallery</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
-    <script type="module" src="js/gallery.js"></script>
     <script src="js/nav.js"></script>
+    <script type="module" src="js/showRoom.js"></script>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
@@ -52,22 +52,20 @@ MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
         <div id="menuButton" onclick="toggleMenu()">MENU</div>
         <nav class="hidden">
             <ul>
-                <li>
-                    <a onclick="navigateToElement('modelContainer')">
-                        Works
-                        <ul id="modelMenu">
-                        </ul>
-                    </a>
+                <li onclick="navigateToElement('showRoom')">
+                    Samples
+                    <ul id="modelMenu">
+                    </ul>
                 </li>
-                <li>
-                    <a onclick="navigateToElement('contact')">Contact</a>
+                <li onclick="navigateToElement('contact')">
+                    Contact
                 </li>
             </ul>
         </nav>
     </div>
     
     <div id="mainContent">
-        <div id="modelContainer" class="section">
+        <div id="showRoom" class="section">
             <div id="loadingScreen" class="hidden">
                 <span id="loadingProgress">%</span>
                 <img src="./res/loading.jpg" alt="loading...">
