@@ -5,6 +5,11 @@ import CameraControl from "./CameraControl.js";
 import { OrbitControls } from "./OrbitControls.js";
 
 const models = {
+  "teapot": {
+    title: "Teapot",
+    path: "./res/teapot/",
+    name: "teapot"
+  },
   "coke": {
     title: "Coke",
     path: "./res/coke/",
