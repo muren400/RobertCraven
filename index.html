@@ -48,7 +48,7 @@ MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 
 <body oncontextmenu="return false;">
     <div id="header">
-        <div id="logo">Robert Craven</div>
+        <a href="#" id="logo">Robert Craven</a>
         <div id="menuButton" onclick="toggleMenu()">MENU</div>
         <nav class="hidden">
             <ul>
@@ -70,14 +70,33 @@ MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
                 <span id="loadingProgress">%</span>
                 <img src="./res/loading.jpg" alt="loading...">
             </div>
+            <div class="showGallery clickable">Gallery</div>
+            <div class="gallery hidden" id="gallery">
+                <div class="slides">
+                    <img class="galleryImage galleryImageLeft"></img>
+                    <img class="galleryImage galleryImageCenter"></img>
+                    <img class="galleryImage galleryImageRight"></img>
+                </div>
+                <div class="close clickable"></div>
+                <div class="next clickable"></div>
+                <div class="prev clickable"></div>
+            </div>
         </div>
         <div id="contact" class="section">
+            <div style="text-align: center;">
             <h1>Contact</h1>
             <p>
-                Hermannstraße 1337</br>
-                12345 Berlin
+                Robert Craven</br>
+                robbi.craven@gmail.de</br>
+                Hermannstraße 57</br>
+                12049 Berlin</br>
             </p>
+            <a href="https://www.instagram.com/bethere.cavalorn" target="_blank">
+                <img src="res/insta.svg" class="socialMediaIcon"></img>
+            </a>
         </div>
+        </div>
+    </div>
     </div>
     <div id="footer"></div>
 </body>

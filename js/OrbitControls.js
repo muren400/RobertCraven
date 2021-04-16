@@ -790,6 +790,8 @@ var OrbitControls = function ( object, domElement ) {
 
 		if ( scope.enabled === false ) return;
 
+		scope.autoRotate = false;
+
 		switch ( event.pointerType ) {
 
 			case 'mouse':

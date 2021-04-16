@@ -3,43 +3,53 @@ import { OBJLoader } from "./OBJLoader.js";
 import { MTLLoader } from "./MTLLoader.js";
 import CameraControl from "./CameraControl.js";
 import { OrbitControls } from "./OrbitControls.js";
+import Gallery from "./Gallery.js";
 
 const models = {
-  "teapot": {
+  teapot: {
     title: "Teapot",
     path: "./res/teapot/",
-    name: "teapot"
+    name: "teapot",
+    images: ["/res/teapot/01.png", "/res/teapot/02.png", "/res/teapot/03.png"],
   },
-  "coke": {
+  coke: {
     title: "Coke",
     path: "./res/coke/",
-    name: "Diet Coke Can"
+    name: "Diet Coke Can",
+    images: [
+      "/res/coke/1.png",
+      "/res/coke/2.png",
+      "/res/coke/3.png",
+      "/res/coke/4.png",
+      "/res/coke/5.png",
+      "https://colinbendell.cloudinary.com/video/upload/du_20.1/e_loop,fl_animated,f_auto,q_auto/lokiusa-video.gif"
+    ],
   },
-  "capsule": {
+  capsule: {
     title: "Capsule",
     path: "./res/",
-    name: "capsule"
+    name: "capsule",
   },
-  "chair": {
+  chair: {
     title: "Chair",
     path: "./res/chair/",
-    name: "Chair Version 2 mm"
+    name: "Chair Version 2 mm",
   },
-  "female": {
+  female: {
     title: "Female",
     path: "./res/female02/",
-    name: "female02"
+    name: "female02",
   },
-  "cottage": {
+  cottage: {
     title: "Cottage",
     path: "./res/",
-    name: "cottage_obj"
+    name: "cottage_obj",
   },
-  "kackwurst": {
+  kackwurst: {
     title: "Kackwurst",
     path: "./res/",
-    name: "lebendekackwurst"
-  }
+    name: "lebendekackwurst",
+  },
 };
 
 export default class ShowRoom {
@@ -51,16 +61,18 @@ export default class ShowRoom {
       10000
     );
 
+    this.gallery = new Gallery();
+
     this.scene = new THREE.Scene();
 
     let color = 0xffffff;
     let intensity = 1;
     let light = new THREE.SpotLight(0xafafff, intensity);
-    light.position.set(40000, 20000, 40000);
+    light.position.set(80000, 20000, 40000);
     this.scene.add(light);
 
     light = new THREE.SpotLight(0xffafaf, intensity);
-    light.position.set(-40000, 20000, -40000);
+    light.position.set(-80000, 20000, -40000);
     this.scene.add(light);
 
     light = new THREE.DirectionalLight(color, 0.2);
@@ -81,17 +93,25 @@ export default class ShowRoom {
     this.pivotControl = urlParams.get("pivotControl");
 
     if (this.isTouchDevice() || this.pivotControl !== "true") {
-      this.orbitControls = new OrbitControls(this.camera, this.renderer.domElement);
+      this.orbitControls = new OrbitControls(
+        this.camera,
+        this.renderer.domElement
+      );
       this.orbitControls.enableDamping = true;
       this.orbitControls.update();
     } else {
-      this.cameraControl = new CameraControl(this.canvas, this.camera, this.scene);
+      this.cameraControl = new CameraControl(
+        this.canvas,
+        this.camera,
+        this.scene
+      );
     }
 
     window.addEventListener("resize", this.resize.bind(this));
     this.resize();
 
     this.initMenu();
+    // this.gallery.setImages();
   }
 
   isTouchDevice() {
@@ -117,7 +137,7 @@ export default class ShowRoom {
 
     let initialModel = null;
 
-    if(target === "showRoom" && models[value]) {
+    if (target === "showRoom" && models[value]) {
       initialModel = value;
     }
 
@@ -140,7 +160,7 @@ export default class ShowRoom {
       }
     }
 
-    if(initialModel) {
+    if (initialModel) {
       this.loadModel(initialModel);
     }
   }
@@ -177,8 +197,8 @@ export default class ShowRoom {
     );
 
     this.camera.position.z = target.z + cameraDistance;
-    this.camera.position.y = target.y;
-    this.camera.position.x = target.x;
+    this.camera.position.y = target.y + Math.abs(bbox.max.y - bbox.min.y);
+    this.camera.position.x = target.x + Math.abs(bbox.max.x - bbox.min.x);
 
     this.camera.lookAt(target);
 
@@ -195,10 +215,14 @@ export default class ShowRoom {
     this.showLoadingAnimation(true);
 
     const model = models[name];
+    if (!model) {
+      return;
+    }
 
     if (this.object) {
       this.scene.remove(this.object);
     }
+    this.gallery.setImages(model.images);
 
     var mtlLoader = new MTLLoader();
     mtlLoader.setPath(model.path);
@@ -215,8 +239,13 @@ export default class ShowRoom {
           (object) => {
             this.object = object;
             this.scene.add(object);
+            this.resize();
             this.fitCamera();
             this.showLoadingAnimation(false);
+
+            if(this.orbitControls) {
+              this.orbitControls.autoRotate = true;
+            }
           },
           (xhr) => {
             this.setLoadingProgress((xhr.loaded / xhr.total) * 100);
