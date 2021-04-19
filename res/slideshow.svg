@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="64"
+   height="128"
+   viewBox="0 0 16.933333 33.866668"
+   version="1.1"
+   id="svg8"
+   sodipodi:docname="slideshow.svg"
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15, custom)">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="5.6"
+     inkscape:cx="-1.5985693"
+     inkscape:cy="64.232516"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="true"
+     units="px"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:window-width="1680"
+     inkscape:window-height="987"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid18"
+       units="px"
+       spacingx="4.2333334"
+       spacingy="4.2333334"
+       empspacing="2"
+       originx="0"
+       originy="0"
+       enabled="false" />
+    <sodipodi:guide
+       position="0,16.933333"
+       orientation="0,-1"
+       id="guide20" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g167"
+       transform="matrix(0.03283994,0,0,0.03283994,0.06059594,0.19901018)">
+      <g
+         id="g108">
+	<g
+   id="g106">
+		<g
+   id="g104">
+			<path
+   d="M 495.1,38.4 H 85.5 C 76.1,38.4 68.4,46 68.4,55.5 V 72.6 H 51.3 c -9.4,0 -17.1,7.6 -17.1,17.1 v 17.1 H 17.1 C 7.7,106.8 0,114.4 0,123.9 v 332.8 c 0,9.4 7.6,17.1 17.1,17.1 h 409.6 c 9.4,0 17.1,-7.6 17.1,-17.1 v -17.1 h 17.1 c 9.4,0 17.1,-7.6 17.1,-17.1 v -17.1 h 17.1 c 9.4,0 17.1,-7.6 17.1,-17.1 V 55.5 c 0,-9.5 -7.6,-17.1 -17.1,-17.1 z m -68.3,276 -44.7,-51.2 c -3.4,-3.9 -9.4,-3.9 -12.9,0 L 315.2,325 168,194.2 c -3.2,-2.9 -8.1,-2.9 -11.3,0 L 17.3,318.1 V 132.3 c 0,-4.7 3.8,-8.5 8.5,-8.5 h 392.5 c 4.7,0 8.5,3.8 8.5,8.5 z m 25.7,108 H 444 V 123.7 c 0,-9.4 -7.6,-17.1 -17.1,-17.1 H 51.4 v -8.5 c 0,-4.7 3.8,-8.5 8.5,-8.5 h 392.5 c 4.7,0 8.5,3.8 8.5,8.5 l 0.1,315.8 c 0,4.7 -3.8,8.5 -8.5,8.5 z m 34.1,-34.2 h -8.5 V 89.6 c 0,-9.4 -7.6,-17.1 -17.1,-17.1 H 85.5 V 64 c 0,-4.7 3.8,-8.5 8.5,-8.5 h 392.5 c 4.7,0 8.5,3.8 8.5,8.5 v 315.7 h 0.1 c 0,4.7 -3.8,8.5 -8.5,8.5 z"
+   id="path100" />
+
+			<path
+   d="m 307.4,174.9 c -18.8,0 -34.1,15.3 -34.1,34.1 0,18.8 15.3,34.1 34.1,34.1 18.8,0 34.1,-15.3 34.1,-34.1 0,-18.8 -15.3,-34.1 -34.1,-34.1 z"
+   id="path102" />
+
+		</g>
+
+	</g>
+
+</g>
+      <g
+         id="g110">
+</g>
+      <g
+         id="g112">
+</g>
+      <g
+         id="g114">
+</g>
+      <g
+         id="g116">
+</g>
+      <g
+         id="g118">
+</g>
+      <g
+         id="g120">
+</g>
+      <g
+         id="g122">
+</g>
+      <g
+         id="g124">
+</g>
+      <g
+         id="g126">
+</g>
+      <g
+         id="g128">
+</g>
+      <g
+         id="g130">
+</g>
+      <g
+         id="g132">
+</g>
+      <g
+         id="g134">
+</g>
+      <g
+         id="g136">
+</g>
+      <g
+         id="g138">
+</g>
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:3.75547px;font-variation-settings:normal;opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;stroke-width:0.0388437;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000;stop-opacity:1"
+       x="-0.60981345"
+       y="28.905952"
+       id="text171"
+       transform="scale(0.95122418,1.0512769)"><tspan
+         sodipodi:role="line"
+         id="tspan169"
+         x="-0.60981345"
+         y="28.905952"
+         style="font-size:13.3528px;stroke-width:0.0388438">3D</tspan></text>
+  </g>
+</svg>

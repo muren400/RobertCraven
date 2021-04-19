@@ -1,56 +1,11 @@
 import * as THREE from "./three.module.js";
 import { OBJLoader } from "./OBJLoader.js";
 import { MTLLoader } from "./MTLLoader.js";
+import { RGBELoader } from "./RGBELoader.js";
 import CameraControl from "./CameraControl.js";
 import { OrbitControls } from "./OrbitControls.js";
-import Gallery from "./Gallery.js";
-
-const models = {
-  teapot: {
-    title: "Teapot",
-    path: "./res/teapot/",
-    name: "teapot",
-    images: ["/res/teapot/01.png", "/res/teapot/02.png", "/res/teapot/03.png"],
-  },
-  coke: {
-    title: "Coke",
-    path: "./res/coke/",
-    name: "Diet Coke Can",
-    images: [
-      "/res/coke/1.png",
-      "/res/coke/2.png",
-      "/res/coke/3.png",
-      "/res/coke/4.png",
-      "/res/coke/5.png",
-      "https://colinbendell.cloudinary.com/video/upload/du_20.1/e_loop,fl_animated,f_auto,q_auto/lokiusa-video.gif"
-    ],
-  },
-  capsule: {
-    title: "Capsule",
-    path: "./res/",
-    name: "capsule",
-  },
-  chair: {
-    title: "Chair",
-    path: "./res/chair/",
-    name: "Chair Version 2 mm",
-  },
-  female: {
-    title: "Female",
-    path: "./res/female02/",
-    name: "female02",
-  },
-  cottage: {
-    title: "Cottage",
-    path: "./res/",
-    name: "cottage_obj",
-  },
-  kackwurst: {
-    title: "Kackwurst",
-    path: "./res/",
-    name: "lebendekackwurst",
-  },
-};
+import Slideshow from "./Slideshow.js";
+import { exhibits } from "./content.js";
 
 export default class ShowRoom {
   constructor() {
@@ -61,7 +16,7 @@ export default class ShowRoom {
       10000
     );
 
-    this.gallery = new Gallery();
+    this.slideshow = new Slideshow();
 
     this.scene = new THREE.Scene();
 
@@ -83,6 +38,8 @@ export default class ShowRoom {
     this.mtlLoader = new MTLLoader();
 
     this.renderer = new THREE.WebGLRenderer({ antialias: true });
+    this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    this.renderer.toneMappingExposure = 1;
 
     this.canvas = this.renderer.domElement;
     document.getElementById("showRoom").appendChild(this.canvas);
@@ -111,7 +68,6 @@ export default class ShowRoom {
     this.resize();
 
     this.initMenu();
-    // this.gallery.setImages();
   }
 
   isTouchDevice() {
@@ -123,7 +79,7 @@ export default class ShowRoom {
   }
 
   initMenu() {
-    if (!models) {
+    if (!exhibits) {
       return;
     }
 
@@ -137,12 +93,12 @@ export default class ShowRoom {
 
     let initialModel = null;
 
-    if (target === "showRoom" && models[value]) {
+    if (target === "showRoom" && exhibits[value]) {
       initialModel = value;
     }
 
-    for (let name in models) {
-      const model = models[name];
+    for (let name in exhibits) {
+      const model = exhibits[name];
       const li = document.createElement("li");
       modelMenu.appendChild(li);
 
@@ -212,9 +168,15 @@ export default class ShowRoom {
   }
 
   loadModel(name) {
+    if(name === this.currentModel) {
+      return;
+    }
+
     this.showLoadingAnimation(true);
 
-    const model = models[name];
+    this.currentModel = name;
+
+    const model = exhibits[name];
     if (!model) {
       return;
     }
@@ -222,7 +184,38 @@ export default class ShowRoom {
     if (this.object) {
       this.scene.remove(this.object);
     }
-    this.gallery.setImages(model.images);
+
+    if (!model.path) {
+      showElement(this.slideshow.slideshow);
+      hideElement(this.slideshow.toggleSlideshow);
+      this.showLoadingAnimation(false);
+    } else {
+      hideElement(this.slideshow.slideshow);
+      showElement(this.slideshow.toggleSlideshow);
+    }
+
+    if(this.audio) {
+      this.audio.pause();
+    }
+
+    const toggleAudio = document.querySelector("#toggleMusic");
+    const toggleAudioButton = toggleAudio.querySelector("input");
+    if(!model.audio) {
+      hideElement(toggleAudio);
+    } else {
+      this.audio = new Audio(model.audio);
+      showElement(toggleAudio);
+
+      if(toggleAudioButton.checked == false) {
+        this.audio.play();
+      }
+    }
+
+    this.slideshow.setImages(model.images);
+
+    if (!model.path) {
+      return;
+    }
 
     var mtlLoader = new MTLLoader();
     mtlLoader.setPath(model.path);
@@ -243,7 +236,28 @@ export default class ShowRoom {
             this.fitCamera();
             this.showLoadingAnimation(false);
 
-            if(this.orbitControls) {
+            // new RGBELoader()
+            // .setDataType(THREE.UnsignedByteType)
+            // .setPath('/res/hdr/')
+            // .load('royal_esplanade_1k.hdr', texture => {
+
+            //   const pmremGenerator = new THREE.PMREMGenerator(this.renderer);
+            //   pmremGenerator.compileEquirectangularShader();
+
+            //   const envMap = pmremGenerator.fromEquirectangular(texture).texture;
+
+            //   this.scene.background = envMap;
+            //   this.scene.environment = envMap;
+            //   object.children[0].material.envMap = envMap
+            //   object.children[0].material.needsUpdate = true;
+
+            //   // texture.dispose();
+            //   // pmremGenerator.dispose();
+
+            //   // render();
+            // });
+
+            if (this.orbitControls) {
               this.orbitControls.autoRotate = true;
             }
           },

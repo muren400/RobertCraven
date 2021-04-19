@@ -87,10 +87,8 @@ body {
 /* CONTENT */
 .section {
   min-height: 100%;
-  /* padding-top: 60px; */
   padding-left: 10px;
   padding-right: 10px;
-  /* padding-bottom: 10px; */
   box-sizing: border-box;
 }
 
@@ -127,15 +125,11 @@ body {
   animation: spin 2s linear infinite;
 }
 
-#contact {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.socialMediaIcon {
+.actionIcon {
   width: 32px;
   height: 32px;
+  padding: 10px;
+  filter: grayscale(100%) invert(100%);
 }
 
 @-moz-keyframes spin {
@@ -157,100 +151,64 @@ body {
   }
 }
 
-.showGallery {
-  position: absolute;
-  top: 60px;
-  z-index: 100;
-  color: white;
-}
-
-.gallery {
-  display: block;
-  position: absolute;
-  z-index: 100;
-  top: 0px;
-  left: 0px;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #ffffff59;
-}
-
-.gallery .close {
-  position: absolute;
-  right: 30px;
-  top: 60px;
-}
-
-.gallery .close:after {
-  color: white;
-  line-height: 1;
-  content: "\00D7";
-  font-family: helvetica, arial, sans-serif;
-  width: 40px;
-  height: 40px;
-  font-size: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.gallery .prev {
-  position: absolute;
-  left: 50px;
-  width: 0;
-  height: 0;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  border-right: 20px solid white;
-}
-
-.gallery .next {
-  position: absolute;
-  right: 50px;
-  width: 0;
-  height: 0;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  border-left: 20px solid white;
-}
-
-.gallery .slides {
-  position: relative;
-  height: calc(100% - 120px);
-  width: calc(100% - 50px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
-
-.gallery .slides .galleryImage {
-  background-color: cadetblue;
-  max-height: calc(100% - 20px);
-  max-width: calc(100% - 20px);
-  transition: transform 0.2s;
-  transform: translateX(0);
-}
-
-.gallery .slides .galleryImageLeft {
-  position: absolute;
-  transform: translateX(-300%);
-}
-
-.gallery .slides .galleryImageRight {
-  position: absolute;
-  transform: translateX(300%);
-}
-
 #contact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: gray;
+}
+
+.socialMediaIcon {
+  width: 32px;
+  height: 32px;
+}
+
+.actions {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  z-index: 100;
+}
+
+.toggleControl {
+  width: 32;
+  height: 32px;
+  padding: 10px;
+  overflow: hidden;
+  float: left;
+}
+
+.toggleControl input {
+  visibility: hidden;
+  position: absolute;
+  left: -15px;
+}
+
+.toggleControl label {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  content: "";
+  background-size: 32px 64px;
+  background-position-y: 0px;
+  filter: grayscale(100%) invert(100%);
+}
+
+.toggleControl input:checked+label {
+  background-position-y: 32px;
+}
+
+#toggleSlideshow input+label {
+  background-image: url("/res/slideshow.svg");
+}
+
+#toggleMusic input+label {
+  background-image: url("/res/speaker.svg");
 }
 
 .hidden {
   visibility: hidden;
+  display: none;
 }
 
 /* ALLWAYS ON MENU FOR NON TOUCH DEVICES */
@@ -266,10 +224,15 @@ body {
     width: auto;
     height: auto;
     background-color: #00000000;
-    visibility: visible !important;
     float: right;
     overflow: inherit;
   }
+
+  #header nav.hidden {
+    visibility: visible;
+    display: block;
+  }
+
   #menuButton {
     visibility: hidden;
   }
@@ -288,7 +251,7 @@ body {
     padding-left: 0px;
   }
   #header nav li ul li:hover {
-    background-color: #00000000;
+    background-color: #000000ab;
   }
   #header nav li ul li:hover {
     color: #ffffff6e;
@@ -298,18 +261,8 @@ body {
   }
   #header nav li ul li {
     float: none;
-    padding-left: 0;
-  }
-
-  .gallery .prev {
-    border-top: 20px solid transparent;
-    border-bottom: 20px solid transparent;
-    border-right: 40px solid white;
-  }
-  
-  .gallery .next {
-    border-top: 20px solid transparent;
-    border-bottom: 20px solid transparent;
-    border-left: 40px solid white;
+    padding-left: 10px;
+    margin-left: -10px;
+    background-color: #00000064;
   }
 }

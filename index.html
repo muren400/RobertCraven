@@ -38,19 +38,20 @@ MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 <html>
 
 <head>
-    <title>gallery</title>
+    <title>Robert Craven</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
     <script src="js/nav.js"></script>
     <script type="module" src="js/showRoom.js"></script>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/slideshow.css">
 </head>
 
 <body oncontextmenu="return false;">
     <div id="header">
         <a href="#" id="logo">Robert Craven</a>
         <div id="menuButton" onclick="toggleMenu()">MENU</div>
-        <nav class="hidden">
+        <nav>
             <ul>
                 <li onclick="navigateToElement('showRoom')">
                     Samples
@@ -70,33 +71,47 @@ MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
                 <span id="loadingProgress">%</span>
                 <img src="./res/loading.jpg" alt="loading...">
             </div>
-            <div class="showGallery clickable">Gallery</div>
-            <div class="gallery hidden" id="gallery">
+            <div class="slideshow hidden" tabindex="0" id="slideshow">
                 <div class="slides">
-                    <img class="galleryImage galleryImageLeft"></img>
-                    <img class="galleryImage galleryImageCenter"></img>
-                    <img class="galleryImage galleryImageRight"></img>
+                    <div class="slideshowLeft imageContainer">
+                        <img class="slideshowImage slideshowImageLeft"></img>
+                        <span></span>
+                    </div>
+                    <div class="slideshowCenter imageContainer">
+                        <img class="slideshowImage slideshowImageCenter"></img>
+                        <span></span>
+                    </div>
+                    <div class="slideshowRight imageContainer">
+                        <img class="slideshowImage slideshowImageRight"></img>
+                        <span></span>
+                    </div>
                 </div>
-                <div class="close clickable"></div>
                 <div class="next clickable"></div>
                 <div class="prev clickable"></div>
+            </div>
+            <div class="actions">
+                <div class="toggleControl" id="toggleSlideshow">
+                    <input type="checkbox" id="toggleSlideshowButton"><label class="clickable" for="toggleSlideshowButton"></label>
+                </div>
+                <div class="toggleControl" id="toggleMusic">
+                    <input type="checkbox" id="toggleMusicButton" checked="true"><label class="clickable" for="toggleMusicButton"></label>
+                </div>
             </div>
         </div>
         <div id="contact" class="section">
             <div style="text-align: center;">
-            <h1>Contact</h1>
-            <p>
-                Robert Craven</br>
-                robbi.craven@gmail.de</br>
-                Hermannstraße 57</br>
-                12049 Berlin</br>
-            </p>
-            <a href="https://www.instagram.com/bethere.cavalorn" target="_blank">
-                <img src="res/insta.svg" class="socialMediaIcon"></img>
-            </a>
+                <h1>Contact</h1>
+                <p>
+                    Robert Craven</br>
+                    robbi.craven@gmail.de</br>
+                    Hermannstraße 57</br>
+                    12049 Berlin</br>
+                </p>
+                <a href="https://www.instagram.com/bethere.cavalorn" target="_blank">
+                    <img src="res/insta.svg" class="socialMediaIcon"></img>
+                </a>
+            </div>
         </div>
-        </div>
-    </div>
     </div>
     <div id="footer"></div>
 </body>

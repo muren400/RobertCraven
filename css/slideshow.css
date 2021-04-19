@@ -1,0 +1,116 @@
+.slideshow {
+    display: block;
+    position: absolute;
+    z-index: 100;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+}
+
+.slideshow .close {
+    position: absolute;
+    right: 30px;
+    top: 60px;
+}
+
+.slideshow .close:after {
+    color: white;
+    line-height: 1;
+    content: "\00D7";
+    font-family: helvetica, arial, sans-serif;
+    width: 40px;
+    height: 40px;
+    font-size: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slideshow .prev {
+    position: absolute;
+    left: 20px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 20px solid white;
+}
+
+.slideshow .next {
+    position: absolute;
+    right: 20px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 20px solid white;
+}
+
+.slideshow .slides {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.slideshow .slides .imageContainer {
+    height: calc(100% - 120px);
+    width: 100%;
+    transition: transform 0.2s;
+    transform: translateX(0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* overflow: hidden; */
+}
+
+.slideshow .slides .imageContainer span {
+    color: white;
+    position: absolute;
+    bottom: -25px;
+}
+
+.slideshow .slides .slideshowImage {
+    max-height: calc(100%);
+    max-width: calc(100% - 20px);
+}
+
+.slideshow .slides .slideshowLeft {
+    position: absolute;
+    transform: translateX(-300%);
+}
+
+.slideshow .slides .slideshowRight {
+    position: absolute;
+    transform: translateX(300%);
+}
+
+.slideshowHidden {
+    visibility: hidden;
+}
+
+@media only screen and (min-width: 600px) and (hover: hover) {
+    .clickable {
+        cursor: pointer;
+    }
+
+    .slideshow .prev {
+        border-top: 20px solid transparent;
+        border-bottom: 20px solid transparent;
+        border-right: 20px solid white;
+    }
+
+    .slideshow .next {
+        border-top: 20px solid transparent;
+        border-bottom: 20px solid transparent;
+        border-left: 20px solid white;
+    }
+}
