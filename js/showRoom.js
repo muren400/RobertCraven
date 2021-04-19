@@ -192,6 +192,8 @@ export default class ShowRoom {
     } else {
       hideElement(this.slideshow.slideshow);
       showElement(this.slideshow.toggleSlideshow);
+      const toggleSlideshowButton = document.querySelector("#toggleSlideshowButton");
+      toggleSlideshowButton.checked = false;
     }
 
     if(this.audio) {
