@@ -1,0 +1,16 @@
+# MTL written from D:\Desk\ordos.obj
+newmtl glass
+Kd 0 0.178582 0
+Ks 0.0204457 0.0272453 0.04
+Ns 1000
+d 0.5
+illum 2
+Ka 0 0 0
+Ks 0.0204457 0.0272453 0.04
+newmtl house
+Kd 0.144931 0.178582 0.251191
+Ns 1000
+d 1
+illum 2
+Ka 0 0 0
+Ks 0.65 0.542694 0.397991

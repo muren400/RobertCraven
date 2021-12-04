@@ -1,0 +1,22 @@
+# MTL written from D:\Desk\Objekt.obj
+newmtl Sphere
+Kd 0.7858 0.240435 0.8
+Ns 548.748
+d 1
+illum 2
+Ka 0 0 0
+Ks 0.04 0.04 0.04
+newmtl Stab
+Kd 0.7858 0.8 0.240435
+Ns 1000
+d 1
+illum 2
+Ka 0 0 0
+Ks 0.04 0.04 0.04
+newmtl wurm
+Kd 0.472495 0.633039 0.347323
+Ns 4096
+d 0.2
+illum 2
+Ka 0 0 0
+Ks 0.04 0.04 0.04

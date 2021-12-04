@@ -1,0 +1,99 @@
+# MTL written from D:\Desk\OBJFOR WEBSITE\ukeRender.obj
+newmtl Detail1
+Kd 0.369662 0.236911 0.076246
+Ns 256
+d 1
+illum 2
+Ka 0 0 0
+Ks 0.04 0.04 0.04
+newmtl buende
+Kd 0.620658 0.602354 0.560881
+Ns 256
+d 1
+illum 2
+Ka 0 0 0
+Ks 0.04 0.04 0.04
+newmtl detail1bund
+Kd 0.56962 0.561746 0.402947
+Ns 256
+d 1
+illum 2
+Ka 0 0 0
+Ks 0.04 0.04 0.04
+newmtl detail1button
+Kd 0.00685451 0.00730726 0.000242821
+Ns 256
+d 1
+illum 2
+Ka 0 0 0
+Ks 0.04 0.04 0.04
+newmtl detail1buttondot
+Kd 0.7858 0.792882 0.596323
+Ns 256
+d 1
+illum 2
+Ka 0 0 0
+Ks 0.04 0.04 0.04
+newmtl edge
+Kd 0.78481 0.726356 0.464242
+Ns 4096
+d 1
+illum 2
+Ka 0 0 0
+Ks 0.04 0.04 0.04
+newmtl hole
+Kd 0 0 0
+Ns 256
+d 1
+illum 2
+Ka 0 0 0
+Ks 0.04 0.04 0.04
+newmtl peg
+Kd 0.48 0.48 0.48
+Ns 256
+d 1
+illum 2
+Ka 0 0 0
+Ks 0.04 0.04 0.04
+newmtl ring
+Kd 0.658229 0.568765 0.306983
+Ns 256
+d 1
+illum 2
+Ka 0 0 0
+Ks 0.04 0.04 0.04
+newmtl steg
+Kd 0.543634 0.335516 0.148474
+Ns 256
+d 1
+illum 2
+Ka 0 0 0
+Ks 0.04 0.04 0.04
+newmtl steg_detail
+Kd 0.764779 0.764779 0.620658
+Ns 256
+d 1
+illum 2
+Ka 0 0 0
+Ks 0.04 0.04 0.04
+newmtl steg_detail2_040dots_041
+Kd 0.703698 0.68168 0.59442
+Ns 256
+d 1
+illum 2
+Ka 0 0 0
+Ks 0.04 0.04 0.04
+newmtl strings
+Kd 0.627848 0.56384 0.251899
+Ns 2048
+d 1
+illum 2
+Ka 0 0 0
+Ks 0.04 0.04 0.04
+newmtl uke
+Kd 0.379747 0.209224 0.091052
+Ns 4096
+d 1
+illum 2
+Ka 0 0 0
+Ks 0.2 0.2 0.2

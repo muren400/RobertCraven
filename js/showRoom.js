@@ -22,16 +22,22 @@ export default class ShowRoom {
 
     let color = 0xffffff;
     let intensity = 1;
-    let light = new THREE.SpotLight(0xafafff, intensity);
+    // let light = new THREE.SpotLight(0xafafff, intensity);
+    let light = new THREE.SpotLight(0xffffff, intensity);
     light.position.set(80000, 20000, 40000);
     this.scene.add(light);
 
-    light = new THREE.SpotLight(0xffafaf, intensity);
+    // light = new THREE.SpotLight(0xffafaf, intensity);
+    light = new THREE.SpotLight(0xffffff, intensity);
     light.position.set(-80000, 20000, -40000);
     this.scene.add(light);
 
-    light = new THREE.DirectionalLight(color, 0.2);
+    light = new THREE.DirectionalLight(color, 1.0);
     light.position.set(0, -20000, 0);
+    this.scene.add(light);
+
+    light = new THREE.SpotLight(color, 1.0);
+    light.position.set(0, 20000, 0);
     this.scene.add(light);
 
     this.objLoader = new OBJLoader();
@@ -225,6 +231,10 @@ export default class ShowRoom {
       model.name + ".mtl",
       (materials) => {
         materials.preload();
+
+        for(let material in materials.materials) {
+          materials.materials[material].side = THREE.DoubleSide;
+        }
 
         var objLoader = new OBJLoader();
         objLoader.setMaterials(materials);

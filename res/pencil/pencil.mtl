@@ -1,0 +1,29 @@
+# MTL written from D:\Desk\OBJFOR WEBSITE\pencil.obj
+newmtl Default
+Kd 0.268354 0.268354 0.268354
+Ns 512
+d 1
+illum 2
+Ka 0 0 0
+Ks 0.5 0.5 0.5
+newmtl clip
+Kd 0.8 0.794939 0.333313
+Ns 4096
+d 1
+illum 2
+Ka 0 0 0
+Ks 0.547259 0.562032 0.577061
+newmtl gripp
+Kd 0.157 0.209591 0.605063
+Ns 256
+d 1
+illum 2
+Ka 0 0 0
+Ks 0.04 0.04 0.04
+newmtl ground
+Kd 0.257357 0.763049 0.8
+Ns 256
+d 1
+illum 2
+Ka 0 0 0
+Ks 0.7 0.7 0.7

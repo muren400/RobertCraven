@@ -1,0 +1,22 @@
+# MTL written from D:\Desk\OBJFOR WEBSITE\Anvil.obj
+newmtl Anvil
+Kd 0.412658 0.412658 0.412658
+Ns 256
+d 1
+illum 2
+Ka 0 0 0
+Ks 0.04 0.04 0.04
+newmtl Stand
+Kd 0.412658 0.412658 0.412658
+Ns 256
+d 1
+illum 2
+Ka 0 0 0
+Ks 0.04 0.04 0.04
+newmtl floor
+Kd 0.412658 0.412658 0.412658
+Ns 256
+d 1
+illum 2
+Ka 0 0 0
+Ks 0.04 0.04 0.04
